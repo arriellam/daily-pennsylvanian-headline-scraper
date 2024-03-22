@@ -23,12 +23,19 @@ def scrape_data_point():
     req = requests.get("https://www.thedp.com/section/opinion")
     loguru.logger.info(f"Request URL: {req.url}")
     loguru.logger.info(f"Request status code: {req.status_code}")
+    
 
     if req.ok:
         soup = bs4.BeautifulSoup(req.text, "html.parser")
-        target_element = soup.find("a", class_="standard-link")
-        data_point = "" if target_element is None else target_element.text
-        loguru.logger.info(f"Data point: {data_point}")
+        target_element = soup.find("h3", class_="standard-link")
+        print(target_element.text)
+        if target_element is None:
+            data_point = "", ""
+        else:
+            title = target_element.text
+            link = target_element.find("a")["href"]
+            data_point = title, link
+            loguru.logger.info(f"Data point: {data_point}")
         return data_point
 
 
