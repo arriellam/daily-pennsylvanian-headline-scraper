@@ -135,3 +135,14 @@ But it is important to use it responsibly and ethically. Here are some guideline
 9. Document your scraping process thoroughly for replicability, transparency and accountability.
 
 10. Continuously re-evaluate your scraping program against applicable laws and ethical principles.
+
+### Updates Made to Scraper
+
+the main goal of the changes is to scrape information on most recently published article under the "Opinions" section of the website and return not only the title of the article, but also the link to the article. This information is useful as it provides us with information on hot topics that students where brave enough to stand up and share their perspective on, giving us a chance to hear a possibly different perspective on a particular topic. 
+
+The main changes made to the 'scrape_data_point' function where: 
+
+1. Changed the source URL from https://www.thedp.com to https://www.thedp.com/section/opinion.
+2. Changed the CSS selector used in the 'scrape_data_point' function to target the '<h3>' element with the class "standard-link"
+3. Made the return variable 'data_point' return tuple of the title and url the current Opinion Article.
+
